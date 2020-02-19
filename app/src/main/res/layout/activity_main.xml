@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fxj.giftandpraisetextureviewdemo.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="直播间送礼和点赞TextureView Demo"
+        android:textSize="15dp"/>
+
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="540dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_title"
+        />
+
+    <LinearLayout
+        android:id="@+id/contral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/btn_gift_lbjn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="兰博基尼"/>
+        <Button
+            android:id="@+id/btn_gift_mhd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="梦幻岛"
+            />
+    </LinearLayout>
+
+    <TextureView
+        android:id="@+id/texture_view"
+        android:layout_width="960dp"
+        android:layout_height="540dp"
+        android:layout_below="@id/tv_title"
+        />
+</RelativeLayout>
