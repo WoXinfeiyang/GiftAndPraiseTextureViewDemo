@@ -156,6 +156,7 @@ public class AnimationTextureViewManager {
                     }
                 }
             };
+            Log.d(TAG,"#startAnimation#isAvailable="+isAvailable);
             if(isAvailable){
                 drawThread.start();
             }
