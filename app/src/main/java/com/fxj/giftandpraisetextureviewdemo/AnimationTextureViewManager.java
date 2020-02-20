@@ -41,6 +41,7 @@ public class AnimationTextureViewManager {
 
     public SurfaceTextureCallback mSurfaceTextureCallback;
 
+    private boolean isAvailable=false;
     /**是否是从assets目录下获取到的图片资源文件*/
     private boolean isAssets;
     private AssetManager am;
@@ -98,7 +99,7 @@ public class AnimationTextureViewManager {
 
         private final String TAG= AnimationTextureViewManager.class.getSimpleName()+"_"+ SurfaceTextureCallback.class.getSimpleName();
 
-        private boolean isAvailable=false;
+
 
         private Canvas canvas;
         /**是否正在绘制标志位*/
@@ -112,25 +113,26 @@ public class AnimationTextureViewManager {
 
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-            Log.d(TAG,"#onSurfaceTextureAvailable#width="+width+",height="+height);
             isAvailable=true;
+            Log.d(TAG,"#onSurfaceTextureAvailable#width="+width+",height="+height+",isAvailable="+isAvailable);
+
         }
 
         @Override
         public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-            Log.d(TAG,"#onSurfaceTextureSizeChanged#width="+width+",height="+height);
+            Log.d(TAG,"#onSurfaceTextureSizeChanged#width="+width+",height="+height+",isAvailable="+isAvailable);
         }
 
         @Override
         public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-            Log.d(TAG,"#onSurfaceTextureDestroyed#");
             isAvailable=false;
+            Log.d(TAG,"#onSurfaceTextureDestroyed#isAvailable="+isAvailable);
             return false;
         }
 
         @Override
         public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-            Log.d(TAG,"#onSurfaceTextureUpdated#");
+            Log.d(TAG,"#onSurfaceTextureUpdated#isAvailable="+isAvailable);
         }
         /**开启动画绘制图片,通过绘制线程drawThread在TextureView上利用Canvas一张图片一张图片的去绘制*/
         public void startAnimation(){
@@ -157,9 +159,7 @@ public class AnimationTextureViewManager {
                 }
             };
             Log.d(TAG,"#startAnimation#isAvailable="+isAvailable);
-            if(isAvailable){
-                drawThread.start();
-            }
+            drawThread.start();
         }
 
         public void stopAnimation(){
