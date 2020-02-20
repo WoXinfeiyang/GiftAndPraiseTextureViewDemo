@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 
         this.mTextureView = (TextureView) findViewById(R.id.texture_view);
 
-        String filePath =GlobalFunctionsUtils.getAppDir(getApplicationContext())+"xiao_ping_zi.mp4";
+        String filePath ="android.resource://"+getPackageName()+ "/"+R.raw.xiao_ping_zi;
         if(!TextUtils.isEmpty(filePath)){
             loadVideoFromLocad(filePath);
         }
